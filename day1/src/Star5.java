@@ -1,5 +1,5 @@
 
-public class star5 {
+public class Star5 {
 
 	public static void main(String[] args) {
 		 // 1번 예제
