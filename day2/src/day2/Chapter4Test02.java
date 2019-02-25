@@ -1,6 +1,6 @@
 package day2;
 
-public class Chapter4Test2 {
+public class Chapter4Test02 {
 
 	public static void main(String[] args) {
 		int result = 0;

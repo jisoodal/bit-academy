@@ -11,11 +11,11 @@ public class Quiz01 {
 		
 		// 1번
 		int[] numArr = {4, 4, 4, 6, 5, 7, 9, 7, 5, 3};
-		int[] counter = new int[10];
+		int[] counter = new int[10]; // 카운팅 결과를 저장할 배열
 		int index = 0; // 순차적으로 numArr에 다시 집어넣기 위해
 		
 		for(int i=0;i<numArr.length;i++) { // 숫자 개수를 센다
-			counter[numArr[i]]++; // 해당 숫자-> 해당 counter 자리를 1 증가.
+			counter[numArr[i]]++; // 해당 숫자-> 해당 counter 자리를 1 증가. 버킷정렬
 		}
 		
 		for(int i=0;i<numArr.length;i++) { // 작은 수부터 순서대로 counter 개수만큼 나열한다
@@ -35,6 +35,29 @@ public class Quiz01 {
 }
 
 /*
-결과: 1. {3, 4, 4, 4, 5, 5, 6, 7, 7, 9}
-2. {3, 4, 5, 6, 7, 9}
+ 결과: 1. {3, 4, 4, 4, 5, 5, 6, 7, 7, 9}
+ 2. {3, 4, 5, 6, 7, 9}
+*/
+
+/*
+ 강사님 풀이
+ 19줄까지는 동일.
+ 
+ 1. 중복된 값을 제거.
+ 카운팅 결과에서 0보다 큰 요소들을 출력한다.
+ 
+ for(int i=0;i<cntArr.length;i++) {
+ 	if(cntArr[i]>0)
+ 		System.out.println(i);
+ 	}
+ 	
+ 2. 정렬(오름차순)된 결과를 출력
+ cntArr을 읽어서 각요소의 값만큼, index의 값을 출력
+ 
+ for(int i=0;i<cntArr.length;i++) {
+ 	for(int j=0;j<cntArr[i];j++) {
+ 		if(cntArr[i]>0)
+ 			System.out.println(i);
+ 	}
+ }
 */
