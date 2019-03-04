@@ -3,15 +3,35 @@ package day4;
 public class Ch05Test09 {
 
 	public static void main(String[] args) {
-		int[] arr = {10, 20, 30, 40, 50};
-		int sum = 0;
+		char[][] star = {
+				{'*','*',' ',' ',' '},
+				{'*','*',' ',' ',' '},
+				{'*','*','*','*','*'},
+				{'*','*','*','*','*'}
+		};
 		
-		for(int i=0;i<arr.length;i++) {
-			sum += arr[i];
+		char[][] result = new char[star[0].length][star.length];
+		
+		for(int i=0;i<star.length;i++) {
+			for(int j=0;j<star[i].length;j++) {
+				System.out.println(star[i][j]);
+			}
+			System.out.println();
 		}
 		
-		System.out.println("sum="+sum);
-
+		System.out.println();
+		
+		for(int i=0;i<star.length;i++) {
+			for(int j=0;j<star[i].length;j++) {
+				//
+			}
+		}
+		
+		for(int i=0;i<result.length;i++) {
+			for(int j=0;j<result[i].length;j++) {
+				System.out.println(result[i][j]);
+			}
+			System.out.println();
+		}
 	}
-
 }
