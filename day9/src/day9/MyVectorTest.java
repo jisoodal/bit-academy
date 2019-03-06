@@ -126,7 +126,7 @@ class MyVectorTest {
 		v.add("t");
 		v.add("i");
 		
-		assertTrue(v.remove("3") == true);
+		assertTrue(v.remove("0") == true);
 	}
 
 }

@@ -46,19 +46,34 @@ public class MyVector {
 	// Q7. MyVector클래스의 객체배열 objArr에서 지정된 객체가 저장되어 있는 위치(index)를 반환하는 int indexOf(Object obj)를 작성하시오.
 	int indexOf(Object obj) {
 		int index = 0;
-		for(int i=0;i<objArr.length;i++) {
-			if(obj == objArr[i]) // 지정된 객체와 objArr 배열의 값이 일치하는 경우
-				index = i; // 해당 배열의 위치를 index에 넣어준다
-			else 
-				continue;
+		
+		if(exist(obj) == true) {
+			System.out.println("ok");
+			for(int i=0;i<objArr.length;i++) {
+				if(obj == objArr[i]) { // 지정된 객체와 objArr 배열의 값이 일치하는 경우
+					index = i; // 해당 배열의 위치를 index에 넣어준다
+					System.out.println(i);
+				}
+				else 
+					continue;
+			}	
+			System.out.println(index);
+			System.out.println("여기까진와요");
+			return index; // index값 반환
 		}
-		return index; // index값 반환
+		else {
+			System.out.println("존재하지 않는 객체입니다2.");
+			System.out.println(index);
+			return index;
+		}	
 	}
 	
 	// Q8. objArr에서 지정된 객체를 삭제하는 boolean remove(Object obj)를 작성하시오.
 	boolean remove(Object obj) {
 		boolean b = false; // 리턴값을 저장하기 위해 선언
-		
+
+		if(exist(obj) == true) {
+			
 		for(int i=indexOf(obj);i<(objArr.length)-1;i++) {
 			objArr[i] = objArr[i+1]; // 삭제한 데이터의 값을 한 칸씩 복사해서 올려준다
 		}
@@ -70,13 +85,29 @@ public class MyVector {
 		else
 			b = false;
 		
-//		for(int i=0;i<objArr.length;i++) { // 겹치는 객체가 있는지 확인
-//			if(obj == objArr[i])
-//				b = false; // 배열에 존재할 경우
-//			else if(obj)
-//				b = true; // 제대로 삭제되었을 경우
-//		}
 			return b;
+		}
+		else {
+			System.out.println("존재하지 않는 객체입니다1.");
+			return b;
+		}
+	}
+	
+	// 입력된 값이 존재하는지 확인하는 메서드 
+	
+	boolean exist(Object obj) {
+		boolean exist = false; 
+		
+		for(int i=0;i<objArr.length;i++) {
+			if(obj != objArr[i]) { // 입력받은 객체가 배열 안에 존재하지 않는 경우
+				exist = false; // false
+			}
+			else {
+				exist = true; // 존재하는 경우 true
+				break; // for문 빠져나가기
+			}
+		}
+		return exist;
 	}
 	
 }

@@ -15,20 +15,28 @@ public class MyVectorTest02 {
 		v.add("z"); //5 - 4
 		v.add("z1"); //6 - 5
 		v.add("z2"); //7 삭제
-		v.add("z3"); //8 삭제
+		v.add(-1); //8 삭제
 		
 		System.out.println(v.toString());
+		
+		System.out.println(v.exist("z2"));
 		
 		v.remove("z3"); // size - 8
 		v.remove("z2"); // size - 7
 		v.remove("tt"); // size - 6
-		
 		System.out.println(v.toString());
 		
-		System.out.println(v.indexOf("z"));
-		
-		
-		
+//		System.out.println(v.toString());
+//		
+//		System.out.println(v.remove("0"));
+//		System.out.println(v.toString());
+//		
+//		System.out.println(v.remove("a"));
+//		System.out.println(v.toString());
+//		
+//		System.out.println(v.indexOf(-1));
+//
+//		
 	}
 
 }
