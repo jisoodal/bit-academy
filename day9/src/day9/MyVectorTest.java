@@ -18,8 +18,8 @@ class MyVectorTest {
 		assertTrue(v.capacity() == 16);
 	}
 	// expected -> 예외가 발생해야 통과
-	
-	@Test(expected=IllegalArgumentException.class) // 기본 초기화의 경우
+	// 기본 초기화의 경우
+	@Test //(expected=IllegalArgumentException.class) // expected -> 예외가 발생해야 통과
 	void initiallizeTest02() {
 		MyVector v = new MyVector(100);
 		
@@ -27,8 +27,8 @@ class MyVectorTest {
 		
 		assertTrue(v.capacity() == 100);
 		
-		MyVector v2 = new MyVector(-3);
-		assertTrue(v2.capacity() == -3);
+//		MyVector v2 = new MyVector(-3); 음수의 경우 에러
+//		assertTrue(v2.capacity() == -3);
 	}
 	
 	@Test
@@ -88,6 +88,30 @@ class MyVectorTest {
 	}
 	
 	@Test
+	void add2() {
+		Vector v = new Vector();
+		
+		assertTrue(v.size() == 0);
+		
+		for(int i=0;i<10000000;i++) {
+			v.add(i+"");
+		}
+		assertTrue(v.size() == 10000000);
+	}
+	
+	@Test
+	void add3() {
+		Vector v = new Vector();
+		
+		assertTrue(v.size() == 0);
+		
+		v.add(null);
+		assertTrue(v.size() == 1);
+		assertTrue(v.get(0) == null);
+	}
+	
+	
+	@Test
 	void get() { // index위치의 객체를 제대로 반환하는지
 		MyVector v = new MyVector();
 		
@@ -100,6 +124,7 @@ class MyVectorTest {
 		v.add("hihi");
 		
 		assertTrue(v.get(3).equals("tt"));
+		assertTrue("a".equals(v.get(0)));
 		
 		v.remove("tt");
 		v.remove("2");
