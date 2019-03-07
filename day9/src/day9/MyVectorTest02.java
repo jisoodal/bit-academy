@@ -17,14 +17,15 @@ public class MyVectorTest02 {
 		v.add("z2"); //7 삭제
 		v.add(-1); //8 삭제
 		
-		System.out.println(v.toString());
+		System.out.println("문자열로: "+v.toString());
 		
-		System.out.println(v.exist("z2"));
+		System.out.println("z2가 존재하나요? "+v.exist("z2")); // true
+		System.out.println("z3가 존재하나요? "+v.exist("z3")); // false
 		
-		v.remove("z3"); // size - 8
+		v.remove("z3"); // size - 8 // 존재하지 않는 객체입니다1.
 		v.remove("z2"); // size - 7
 		v.remove("tt"); // size - 6
-		System.out.println(v.toString());
+		System.out.println("삭제 후 문자열 "+v.toString());
 		
 //		System.out.println(v.toString());
 //		

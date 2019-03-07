@@ -47,25 +47,16 @@ public class MyVector {
 	int indexOf(Object obj) {
 		int index = 0;
 		
-		if(exist(obj) == true) {
-			System.out.println("ok");
 			for(int i=0;i<objArr.length;i++) {
 				if(obj == objArr[i]) { // 지정된 객체와 objArr 배열의 값이 일치하는 경우
 					index = i; // 해당 배열의 위치를 index에 넣어준다
-					System.out.println(i);
+					
+					return index;
 				}
 				else 
 					continue;
 			}	
-			System.out.println(index);
-			System.out.println("여기까진와요");
-			return index; // index값 반환
-		}
-		else {
-			System.out.println("존재하지 않는 객체입니다2.");
-			System.out.println(index);
-			return index;
-		}	
+			return index; // index값 반환	
 	}
 	
 	// Q8. objArr에서 지정된 객체를 삭제하는 boolean remove(Object obj)를 작성하시오.
@@ -77,23 +68,28 @@ public class MyVector {
 		for(int i=indexOf(obj);i<(objArr.length)-1;i++) {
 			objArr[i] = objArr[i+1]; // 삭제한 데이터의 값을 한 칸씩 복사해서 올려준다
 		}
+		
 		objArr[size] = null; // 마지막 위치를 null로 변경해준다
 		size--; // size 크기를 줄여준다
 			
-		if(obj != objArr[indexOf(obj)])
+		if(indexOf(obj) == 0) { // 삭제한 데이터가 더이상 해당 배열에 존재하지 않는다면
 			b = true;
+			System.out.println("삭제되었습니다");
+		}
+		// 삭제가 제대로 되지 않았을 경우의 else
 		else
 			b = false;
 		
 			return b;
 		}
+		// 입력받은 값이 배열에 존재하지 않는 경우의 else
 		else {
-			System.out.println("존재하지 않는 객체입니다1.");
+			System.out.println("존재하지 않는 객체입니다.");
 			return b;
 		}
 	}
 	
-	// 입력된 값이 존재하는지 확인하는 메서드 
+	// 입력된 값이 배열에 존재하는지 확인하는 메서드 
 	
 	boolean exist(Object obj) {
 		boolean exist = false; 

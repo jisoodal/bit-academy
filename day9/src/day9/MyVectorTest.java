@@ -13,14 +13,22 @@ class MyVectorTest {
 	void initiallizeTest01() {
 		MyVector v = new MyVector();
 		
-		assertTrue(v.capacity == 16);
-	}
-	
-	@Test // 기본 초기화의 경우
-	void initiallizeTest02() {
-		MyVector v = new MyVector(8);
+		assertTrue(v.isEmpty() == true);
 		
-		assertTrue(v.capacity == 8);
+		assertTrue(v.capacity() == 16);
+	}
+	// expected -> 예외가 발생해야 통과
+	
+	@Test(expected=IllegalArgumentException.class) // 기본 초기화의 경우
+	void initiallizeTest02() {
+		MyVector v = new MyVector(100);
+		
+		assertTrue(v.isEmpty() == true);
+		
+		assertTrue(v.capacity() == 100);
+		
+		MyVector v2 = new MyVector(-3);
+		assertTrue(v2.capacity() == -3);
 	}
 	
 	@Test
@@ -31,11 +39,26 @@ class MyVectorTest {
 		
 		v.add("hi");
 		assertTrue(v.isEmpty() == false);
+		
+		v.remove("hi"); // 추가하고 비어있는지 보고 삭제하고 비어있는지 확인하자
+		assertTrue(v.isEmpty() == true);
+		
+		v.remove("hi"); // 없는걸 한번 더 삭제해본다
+		assertTrue(v.isEmpty() == true);
 	}
 	
 	@Test
 	void add() { // 값 대입 후 사이즈 제대로 반환하는지
 		MyVector v = new MyVector();
+		
+		assertTrue(v.isEmpty() == true);
+		assertTrue(v.size() == 0);
+		
+		v.add(1);
+		assertTrue(v.size() == 1);
+		v.remove(3);
+		assertTrue(v.size() == 1);
+		v.remove(1);
 		
 		v.add("a"); //0
 		v.add("2"); //1
@@ -60,11 +83,15 @@ class MyVectorTest {
 		
 		assertTrue(v.indexOf("z") == 4); 
 		
+		assertTrue(v.isEmpty() == false);
+		
 	}
 	
 	@Test
 	void get() { // index위치의 객체를 제대로 반환하는지
 		MyVector v = new MyVector();
+		
+		assertTrue(v.isEmpty() == true);
 		
 		v.add("a");
 		v.add("2");
@@ -78,11 +105,15 @@ class MyVectorTest {
 		v.remove("2");
 		
 		assertTrue(v.get(2).equals("hihi"));
+		
+		assertTrue(v.isEmpty() == false);
 	}
 	
 	@Test
 	void stringOk() { // 모든 객체를 문자열로 이어서 잘 반환하는지
 		MyVector v = new MyVector();
+		
+		assertTrue(v.isEmpty() == true);
 		
 		v.add("i");
 		v.add("wanna");
@@ -96,6 +127,16 @@ class MyVectorTest {
 		v.add("now");
 		
 		assertTrue(v.toString().equals("igohomerightnow"));
+		
+		v.remove("i");
+		v.remove("wanna");
+		v.remove("go");
+		v.remove("home");
+		v.remove("right");
+		v.remove("now");
+		
+		assertTrue(v.isEmpty() == true);
+		
 	}
 	
 	@Test
@@ -126,7 +167,23 @@ class MyVectorTest {
 		v.add("t");
 		v.add("i");
 		
-		assertTrue(v.remove("0") == true);
+		assertTrue(v.remove("i") == true);
 	}
-
 }
+
+/*
+  	Vector v;
+  	@Before <- 테스트 실행되기 전에 한 번만 돌아감
+	void setup() {
+		v = new Vector();
+	}
+	
+	@After
+	void cleanUp(){
+	 테스트가 끝난 후에 수행할 작업을 넣는다.
+	}
+	
+	순서: before -> test1 -> after.
+		 before -> test2 -> after.
+		 before -> test3 -> after.
+*/
