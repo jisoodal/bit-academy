@@ -180,13 +180,17 @@ class TypingGameEx3 extends Frame
            public void actionPerformed(ActionEvent ae) { 
 
 //                    1. TextField의 값을 읽어서 저장한다.(getText()사용)
+//             2. TextField를 비운다.
         	   String curText = tf.getText();
-
-//                    2. TextField를 비운다.
+        	   
+        	   tf.setText("");
+        	   tf.requestFocus();
 
 //                    3. 게임중(isPlaying)이 아니면, 빠져나간다.
-        	   while(isPlaying) {
-        		   for(int i=0;i<curText.length();i++) {
+        	   if(isPlaying) {
+        		   for(int i=0;i<words.size();i++) {
+        			   
+        			   Word tmp = (Word)words.get(i); 
 //                     4. 반복문을 이용해서 사용자가 TextField에 입력한 단어를 words에서 찾는다.
 
 //                     4.1 찾으면, words에서 제거한다.
@@ -194,15 +198,19 @@ class TypingGameEx3 extends Frame
 //                     4.2 단어의 길이에 따라 score를 증가시킨다.(단어의 문자개수 * 50)
 
 //                     4.3 '삑~'소리가 나게 한다.(Toolkit.getDefaultToolkit().beep()사용)
-        			   if(curText.equals(words)) {
+        			   if(curText.equals(tmp.word)) {
         				   words.remove(i);
         				   score += curText.length() * 50;
         				   Toolkit.getDefaultToolkit().beep();
         			   }
         		   }
 //        		   5. 화면을 다시 그리게 한다.(repaint()사용)
+        		   lbScore.setText("Score:"+score); // setText!!!!!!!!!!!!!! 변경!!!!!
+        		   // lbScore 형식에 맞게 setText 지정해줘야함!!
         		   repaint();
         	   }
+        	   else
+        		   System.exit(0);
 
            } 
 
