@@ -1,4 +1,4 @@
-package day12;
+package wordScrambleEx;
 
 public class WordScrambleEx1 {
 

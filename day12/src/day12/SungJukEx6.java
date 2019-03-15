@@ -177,20 +177,21 @@ class Student5 implements Comparable<Student5> {
 //              1. 조건문을 이용해서 alignment의 값에 따라 다르게 처리한다.
 //                   (배열간의 복사에는 System.arraycopy()를 사용한다.)
             
+            // Swtich로 했으면 더 나을듯!!!!!!!!!!!!!!!!!!!
 //            1.1 alignment의 값이 CENTER일 때,
 //          source의 내용이 result의 가운데 복사되도록 한다.
             if(alignment == CENTER) {
-            	System.arraycopy(source, 0 , result, diff/2, str.length());
+            	System.arraycopy(source, 0 , result, diff/2, source.length);
             }
 //          1.2 alignment의 값이 RIGHT일 때,
 //          source의 내용의 끝이 result의 오른쪽 끝에 붙게 복사되도록 한다.
             else if (alignment == RIGHT) {
-            		System.arraycopy(source, 0, result, diff-1, str.length());
+            		System.arraycopy(source, 0, result, diff, source.length);
             }
 //          1.3 alignment의 값이 LEFT 또는 그 밖의 값 일 
 //          source의 내용을 result의 왼쪽끝 부터 복사되도록 한다..           
             else
-            		System.arraycopy(source, 0, result, 0, str.length());
+            		System.arraycopy(source, 0, result, 0, source.length);
 
             return new String(result); 
       } 

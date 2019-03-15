@@ -1,4 +1,4 @@
-package day12;
+package sungJukEx;
 
 import java.util.*; 
 
