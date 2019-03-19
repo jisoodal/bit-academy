@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hello world</title>
+</head>
+<body>
+   <h1>Hello world</h1>
+   <p>안녕하세요! HTML5</p>
+    <a href="http://www.google.com"> google</a>
+        <!--ul<li*3  -->
+        
+    <ul>
+        <li>커피</li>
+        <li>차</li>
+        <li>우유</li>
+    </ul>
+
+    <!-- ul>(li>input[type=checkbox])*3 -->
+    <ul>
+        <li><input type="checkbox" name="lang" value="java" checked>java</li>
+        <li><input type="checkbox" name="lang" value="C#">C#</li>
+        <li><input type="checkbox" name="lang" value="python">python</li>
+    </ul>
+
+    <!-- <table>
+        (tr>td*3)*5  5행 3열
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr> -->
+
+        <!-- (tr>td{Hello}*3)*5 -->
+                <!-- <tr>
+                    <th>Hello</th>
+                    <th>Hello</th>
+                    <th>Hello</th>
+                </tr>
+                <tr>
+                    <td>Hello</td>
+                    <td>Hello</td>
+                    <td>Hello</td>
+                </tr>
+                <tr>
+                    <td>Hello</td>
+                    <td>Hello</td>
+                    <td>Hello</td>
+                </tr>
+                <tr>
+                    <td>Hello</td>
+                    <td>Hello</td>
+                    <td>Hello</td>
+                </tr>
+                <tr>
+                    <td>Hello</td>
+                    <td>Hello</td>
+                    <td>Hello</td>
+                </tr> -->
+
+                <!-- (tr>td{$}*5)*5 -->
+                <style>
+                td{
+                    background-color: yellow;
+                }
+
+                /* 마우스 가져다 대면 바뀌는 컬러 - hover */
+                td:hover {
+                    background-color: yellowgreen;
+                }
+                    </style>
+                <table border="1px">
+                <tr>
+                    <td rowspan="3">1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                </tr>
+    </table>
+</body>
+</html>

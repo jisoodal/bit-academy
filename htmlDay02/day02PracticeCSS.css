@@ -1,0 +1,62 @@
+.center {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+    font-family: 'Hanna', sans-serif;
+    color: mediumblue;
+}
+
+.intro {
+    position: relative;
+}
+
+img#bono {
+    width: 100%;
+    height:auto;
+    opacity: 0.3;
+}
+
+img#intbono{
+    display: block;
+    margin: auto;
+    width: 20%;
+    padding: 10px;
+    margin-top: 30%;
+}
+
+p#introbono{
+    background-origin: 3px solid lightblue;
+    text-align: center;
+    font-size: medium;
+}
+
+img#porori{
+    display: block;
+    margin: auto;
+    width: 20%;
+    padding: 10px;
+    margin-top: 30%;
+}
+
+p#introporo{
+    background-origin: 3px solid lightblue;
+    text-align: center;
+    font-size: medium;
+}
+
+img#neoburi{
+    display: block;
+    margin: auto;
+    width: 20%;
+    padding: 10px;
+    margin-top: 30%;
+}
+
+p#introneobu{
+    background-origin: 3px solid lightblue;
+    text-align: center;
+    font-size: medium;
+}
