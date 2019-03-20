@@ -1,0 +1,329 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>지수블로그</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <script src="main.js"></script>
+
+    <style>
+        body {font-family: Arial;}
+        
+        /* Style the tab */
+        .tab {
+          overflow: hidden;
+          border: 1px solid #ccc;
+          background-color: #f1f1f1;
+        }
+        
+        /* Style the buttons inside the tab */
+        .tab button {
+          background-color: inherit;
+          float: left;
+          border: none;
+          outline: none;
+          cursor: pointer;
+          padding: 14px 16px;
+          transition: 0.3s;
+          font-size: 17px;
+        }
+        
+        /* Change background color of buttons on hover */
+        .tab button:hover {
+          background-color: #ddd;
+        }
+        
+        /* Create an active/current tablink class */
+        .tab button.active {
+          background-color: #ccc;
+        }
+        
+        /* Style the tab content */
+        .tabcontent {
+          display: none;
+          padding: 6px 12px;
+          border: 1px solid #ccc;
+          border-top: none;
+        }
+
+        img#mainblog{
+         width: 100%;
+         height:30%;
+         opacity: 0.3;
+        }
+
+        .accordion {
+        background-color: #eee;
+        color: #444;
+         cursor: pointer;
+         padding: 18px;
+         width: 100%;
+         border: none;
+         text-align: left;
+         outline: none;
+         font-size: 15px;
+         transition: 0.4s;
+        }
+
+        .active, .accordion:hover {
+         background-color: #ccc; 
+}
+
+        .panel {
+          padding: 0 18px;
+          display: none;
+          background-color: white;
+         overflow: hidden;
+        }
+
+        * {box-sizing: border-box}
+body {font-family: Verdana, sans-serif; margin:0}
+.mySlides {display: none}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}
+</style>
+        </style>
+
+</head>
+<body>
+
+<div class="main">
+    <img src="https://t1.daumcdn.net/cfile/tistory/99C77E485ADDAE2505" width = "1000" height="200" id="mainblog">
+</div>
+<div class="tab">
+  <button class="tablinks" onclick="openContents(event, 'food')">맛집정보</button>
+  <button class="tablinks" onclick="openContents(event, 'trip')">여행정보</button>
+  <button class="tablinks" onclick="openContents(event, 'shopping')">쇼핑정보</button>
+  <button class="tablinks" onclick="alert('준비중입니다.')">블로그 소개글</button>
+</div>
+
+<div id="food" class="tabcontent">
+        <h3>맛집소개</h3>
+
+        <button class="accordion">잠실</button>
+        <div class="panel">
+                <div class="slideshow-container">
+
+                        <div class="mySlides fade">
+                          <div class="numbertext">1 / 3</div>
+                          <img src="https://t1.daumcdn.net/cfile/tistory/21028E38594D2B4E28" style="width:100%" id="foodie">
+                          <div class="text">잠실 만푸쿠(일식)<br>
+                            위치: 서울 송파구 오금로18길 4-9<br>
+                            번호: 02-424-4702<br>
+                            대표 음식: 연어덮밥, 장어덮밥 등
+                          </div>
+                        </div>
+                        
+                        <div class="mySlides fade">
+                          <div class="numbertext">2 / 3</div>
+                          <img src="https://scontent-frx5-1.cdninstagram.com/vp/ab3f1257b3c540fcf387ad7b2b6d1cce/5CDC957D/t51.2885-15/e35/47584258_489855498206096_5485665299495656594_n.jpg?_nc_ht=scontent-frx5-1.cdninstagram.com&se=7&ig_cache_key=MTk0NzY5MDA4NzQxNzEzOTcwOQ%3D%3D.2" style="width:100%" id="foodie">
+                          <div class="text">잠실 단디(퓨전한식)<br>
+                            위치: 서울 송파구 백제고분로45길 7<br>
+                            번호: 02-412-5335<br>
+                            대표 음식: 호르몬동, 부타동 등
+                        </div>
+                        </div>
+                        
+                        <div class="mySlides fade">
+                          <div class="numbertext">3 / 3</div>
+                          <img src="https://scontent-sea1-1.cdninstagram.com/vp/41f885ef14146866d7cb08e62ec3a2fb/5CCF44D1/t51.2885-15/e35/47690472_541829942894631_663289065354102895_n.jpg?_nc_ht=scontent-sea1-1.cdninstagram.com&ig_cache_key=MTk0MTE0NzY5MjY4NjA2Mjc1Ng%3D%3D.2" style="width:100%" id="foodie">
+                          <div class="text">잠실 뉴질랜드스토리(브런치)<br>
+                            위치: 서울 송파구 석촌호수로 268<br>
+                            번호: 070-7523-6265<br>
+                            대표 음식: 크림마효, 에그봉봉 등
+
+                          </div>
+                        </div>
+                        
+                        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                        
+                        </div>
+                        <br>
+                        
+                        <div style="text-align:center">
+                          <span class="dot" onclick="currentSlide(1)"></span> 
+                          <span class="dot" onclick="currentSlide(2)"></span> 
+                          <span class="dot" onclick="currentSlide(3)"></span> 
+                        </div>
+                        
+                        <script>
+                        var slideIndex = 1;
+                        showSlides(slideIndex);
+                        
+                        function plusSlides(n) {
+                          showSlides(slideIndex += n);
+                        }
+                        
+                        function currentSlide(n) {
+                          showSlides(slideIndex = n);
+                        }
+                        
+                        function showSlides(n) {
+                          var i;
+                          var slides = document.getElementsByClassName("mySlides");
+                          var dots = document.getElementsByClassName("dot");
+                          if (n > slides.length) {slideIndex = 1}    
+                          if (n < 1) {slideIndex = slides.length}
+                          for (i = 0; i < slides.length; i++) {
+                              slides[i].style.display = "none";  
+                          }
+                          for (i = 0; i < dots.length; i++) {
+                              dots[i].className = dots[i].className.replace(" active", "");
+                          }
+                          slides[slideIndex-1].style.display = "block";  
+                          dots[slideIndex-1].className += " active";
+                        }
+                        </script>
+        </div>
+        <button class="accordion">강남</button>
+        <div class="panel">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
+
+        <button class="accordion">용인</button>
+        <div class="panel">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
+</div>
+      
+      <div id="trip" class="tabcontent">
+        <h3>여행정보</h3>
+        <p>Paris is the capital of France.</p> 
+      </div>
+      
+      <div id="shopping" class="tabcontent">
+        <h3>쇼핑정보</h3>
+        <p>Tokyo is the capital of Japan.</p>
+      </div>
+
+<script>
+        function openContents(evt, contentName) {
+          var i, tabcontent, tablinks;
+          tabcontent = document.getElementsByClassName("tabcontent");
+          for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+          }
+          tablinks = document.getElementsByClassName("tablinks");
+          for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+          }
+          document.getElementById(contentName).style.display = "block";
+          evt.currentTarget.className += " active";
+        }
+        </script>
+
+<!-- 맛집 소개 script -->
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+</script>
+
+</body>
+</html>
