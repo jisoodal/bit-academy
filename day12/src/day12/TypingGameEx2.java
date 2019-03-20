@@ -4,8 +4,8 @@ import java.util.*;
 
 class TypingGameEx2 { 
       Vector words = new Vector(); 
-      String[] data = {"íƒœì—°","ìœ ë¦¬","ìœ¤ì•„","íš¨ì—°","ìˆ˜ì˜","ì„œí˜„","í‹°íŒŒë‹ˆ","ì¨ë‹ˆ","ì œì‹œì¹´"};             
-      int interval = 2 * 1000; // 2ì´ˆ 
+      String[] data = {"ÅÂ¿¬","À¯¸®","À±¾Æ","È¿¿¬","¼ö¿µ","¼­Çö","Æ¼ÆÄ´Ï","½á´Ï","Á¦½ÃÄ«"};             
+      int interval = 2 * 1000; // 2ÃÊ 
 
       int life = 3; 
       int score = 0; 
@@ -16,8 +16,8 @@ class TypingGameEx2 {
       public static void main(String args[]) { 
             TypingGameEx2 game = new TypingGameEx2(); 
 
-            game.wg.start();  
-            game.wd.start();
+            game.wg.start(); 
+            game.wd.start(); 
 
             Vector words = game.words; 
 
@@ -26,26 +26,58 @@ class TypingGameEx2 {
                   System.out.println(words); 
 
                   String prompt = ">>"; 
-                  System.out.print(prompt);
+                  System.out.print(prompt); 
+                  
+                  Object obj = game.words;
+                  int leftTime = 0;
 
-                  // í™”ë©´ìœ¼ë¡œë¶€í„° ë¼ì¸ë‹¨ìœ„ë¡œ ì…ë ¥ë°›ëŠ”ë‹¤. 
+                  // È­¸éÀ¸·ÎºÎÅÍ ¶óÀÎ´ÜÀ§·Î ÀÔ·Â¹Ş´Â´Ù. 
                   Scanner s = new Scanner(System.in); 
-                  String input = s.nextLine().trim();  
+                  String input = s.nextLine().trim(); 
 
-//                1. ë°˜ë³µë¬¸ì„ ì´ìš©í•´ì„œ ì‚¬ìš©ìê°€ ì…ë ¥í•œ ë‹¨ì–´ê°€ wordsì— ìˆëŠ”ì§€ í™•ì¸í•œë‹¤.
+//                       1. ¹İº¹¹®À» ÀÌ¿ëÇØ¼­ »ç¿ëÀÚ°¡ ÀÔ·ÂÇÑ ´Ü¾î°¡ words¿¡ ÀÖ´ÂÁö È®ÀÎÇÑ´Ù.
+//                  for(int i=0;i<words.size();i++) {
+//                	  Word tmp = (Word)words.get(i);
+//
+////                    2. ÀÖÀ¸¸é words¿¡¼­ »èÁ¦ÇÏ°í '»à~'¼Ò¸®°¡ ³ª°Ô ÇÑ´Ù.
+////                    (java.awt.Toolkit.getDefaultToolkit().beep()»ç¿ë)
+//                  		if(input.equals(tmp.word)) {
+//                  			java.awt.Toolkit.getDefaultToolkit().beep();
+//                  			words.remove(i);
+//                  		game.score += tmp.y * input.length() * 50;
+////                        3. Á¡¼ö(score)ÀÇ °ªÀ» °è»êÇØ¼­ Áõ°¡½ÃÅ²´Ù.
+////                  		(ÀÔ·ÂÇÑ ´Ü¾îÀÇ ±ÛÀÚ¼ö * ³²Àº½Ã°£ * 50À¸·Î Á¡¼ö¸¦ °è»êÇÑ´Ù.)
+//                  		}
+//                  	}
+//            } // while(true) 
                   for(int i=0;i<words.size();i++) {
-                	  Word tmp = (Word)words.get(i);
+                	  
+                	  if(input.equals(words)) {
+                		  
+//                        2. ÀÖÀ¸¸é words¿¡¼­ »èÁ¦ÇÏ°í '»à~'¼Ò¸®°¡ ³ª°Ô ÇÑ´Ù.
 
-//                    2. ìˆìœ¼ë©´ wordsì—ì„œ ì‚­ì œí•˜ê³  'ì‚‘~'ì†Œë¦¬ê°€ ë‚˜ê²Œ í•œë‹¤.
-//                    (java.awt.Toolkit.getDefaultToolkit().beep()ì‚¬ìš©)
-                  		if(input.equals(tmp.word)) {
-                  			java.awt.Toolkit.getDefaultToolkit().beep();
-                  			words.remove(i);
-                  		game.score += tmp.y * input.length() * 50;
-//                        3. ì ìˆ˜(score)ì˜ ê°’ì„ ê³„ì‚°í•´ì„œ ì¦ê°€ì‹œí‚¨ë‹¤.
-//                  		(ì…ë ¥í•œ ë‹¨ì–´ì˜ ê¸€ììˆ˜ * ë‚¨ì€ì‹œê°„ * 50ìœ¼ë¡œ ì ìˆ˜ë¥¼ ê³„ì‚°í•œë‹¤.)
-                  		}
-                  	}
+//                        (java.awt.Toolkit.getDefaultToolkit().beep()»ç¿ë)
+                		  
+                		  System.out.println(words.get(i));
+                		  words.remove(i);
+                		  java.awt.Toolkit.getDefaultToolkit().beep();
+                	  }
+                	  
+                	  System.out.println("¿Í¿ê");
+                	  
+                	  if(obj instanceof Word) {
+                		  System.out.println("¿ä±â");
+                		 obj = (Word)obj;
+                		 leftTime = ((Word) obj).y;
+                		 System.out.println("³²Àº ½Ã°£:" + leftTime);
+                	  }
+                	  System.out.println("¿ä±â2");
+                  }
+//                       3. Á¡¼ö(score)ÀÇ °ªÀ» °è»êÇØ¼­ Áõ°¡½ÃÅ²´Ù.
+                  game.score = input.length() * leftTime * 50;
+
+//                          (ÀÔ·ÂÇÑ ´Ü¾îÀÇ ±ÛÀÚ¼ö * ³²Àº½Ã°£ * 50À¸·Î Á¡¼ö¸¦ °è»êÇÑ´Ù.)
+
             } // while(true) 
       } // main 
 
@@ -67,31 +99,34 @@ class TypingGameEx2 {
       } // class WordGenerator 
 
       class WordDropper extends Thread { 
-            public void run() { 
-            	
-//                     1. wordsì— ì €ì¥ëœ ëª¨ë“  ë‹¨ì–´(Wordì¸ìŠ¤í„´ìŠ¤)ì˜ yê°’ì„ 1 ê°ì†Œì‹œí‚¨ë‹¤.
-            	// ë²¡í„° wordsì•ˆì˜ ê°’ì„ë“¤ í•˜ë‚˜ì”© ë¶ˆëŸ¬ì™€ì„œ-> Wordë¡œ í˜•ë³€í™˜ í•œ ë’¤-> yê°’ì„ ë¶ˆëŸ¬ì™€ì„œ ê·¸ê²ƒì„ ê°ì†Œì‹œí‚´
-            	
-            	for(int i=0;i<words.size();i++) {
-            		Word tmp = (Word)words.get(i);
-            		
-            		tmp.y--;           			
-//                      2. yì˜ ê°’ì´ 0ë³´ë‹¤ ì‘ê±°ë‚˜ ê°™ìœ¼ë©´, wordsì—ì„œ ë‹¨ì–´ë¥¼ ì œê±°í•˜ê³  lifeë¥¼ 1 ê°ì†Œì‹œí‚¨ë‹¤.
-            			
-            			if(tmp.y <=0) {
-            				words.remove(tmp);
-            				life--;
-            			}
-            		
-                	if(life == 0) {
-                		System.out.println("life: "+life+"score: "+score);
-                		System.exit(0);
-                	}
-//                         4. 1ì´ˆê°„ ì‹œê°„ì„ ì§€ì—°ì‹œí‚¨ë‹¤.(delay()ì‚¬ìš©)
-                	delay(1000);
-            	}
-//              3. lifeì˜ ê°’ì´ 0ì´ ë˜ë©´ lifeì™€ ì ìˆ˜ë¥¼ ì¶œë ¥í•˜ê³  ê²Œì„ì„ ì¢…ë£Œí•œë‹¤.
-//                     5. ë°˜ë³µë¬¸ì„ ì´ìš©í•´ì„œ 1~4ì˜ ì‘ì—…ì„ ë°˜ë³µí•œë‹¤.
+            public void run() {
+
+//                     1. words¿¡ ÀúÀåµÈ ¸ğµç ´Ü¾î(WordÀÎ½ºÅÏ½º)ÀÇ y°ªÀ» 1 °¨¼Ò½ÃÅ²´Ù.
+            	 TypingGameEx2 game = new TypingGameEx2();           	
+            	 Object obj = game.words;
+            	 
+            	 for(int i=0;life!=0;i++) {
+            		 if(obj instanceof Word) {
+            			 obj = (Word)obj;
+            			 ((Word) obj).y --;
+            		 
+//                   2. yÀÇ °ªÀÌ 0º¸´Ù ÀÛ°Å³ª °°À¸¸é, words¿¡¼­ ´Ü¾î¸¦ Á¦°ÅÇÏ°í life¸¦ 1 °¨¼Ò½ÃÅ²´Ù.
+            		 
+            			 if(((Word) obj).y<=0)
+            				 words.remove(i);
+            			 life --;
+            		 }
+//                     3. lifeÀÇ °ªÀÌ 0ÀÌ µÇ¸é life¿Í Á¡¼ö¸¦ Ãâ·ÂÇÏ°í °ÔÀÓÀ» Á¾·áÇÑ´Ù.
+            	 
+            		 if(life == 0) {
+            			 System.out.println("life:"+life+"score:"+score);
+            			 System.exit(0);
+            		 }
+//               4. 1ÃÊ°£ ½Ã°£À» Áö¿¬½ÃÅ²´Ù.(delay()»ç¿ë)           	 
+            		 delay(1000);
+//                     5. ¹İº¹¹®À» ÀÌ¿ëÇØ¼­ 1~4ÀÇ ÀÛ¾÷À» ¹İº¹ÇÑ´Ù.
+            	 }
+            	 
             } // run() 
       } // class WordDropper 
 
@@ -108,9 +143,8 @@ class TypingGameEx2 {
                   this.y = y; 
             } 
 
-            public String toString() { 
+            public String toString() {
             	return word+y;
             } 
       } // class Word 
 } // TypingGameEx2
-

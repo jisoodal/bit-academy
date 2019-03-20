@@ -12,34 +12,34 @@ class TypingGameEx5 extends Frame
       final int SCREEN_WIDTH; 
       final int SCREEN_HEIGHT; 
 
-      int speed = 500; // ë‹¨ì–´ê°€ ë–¨ì–´ì§€ëŠ” ì†ë„... ë†’ì„ ìˆ˜ë¡ ëŠë¦¬ë‹¤. 
-      int interval = 2 * 1000; // ìƒˆë¡œìš´ ë‹¨ì–´ê°€ ë‚˜ì˜¤ëŠ” ê°„ê²© 
+      int speed = 500; // ´Ü¾î°¡ ¶³¾îÁö´Â ¼Óµµ... ³ôÀ» ¼ö·Ï ´À¸®´Ù. 
+      int interval = 2 * 1000; // »õ·Î¿î ´Ü¾î°¡ ³ª¿À´Â °£°İ 
 
       int score = 0; 
       int life = 3; 
-      int curLevel = 0; 
+      int curLevel = 0;  // ÃÊ±â ·¹º§
       final int MAX_LEVEL; 
 
       boolean isPlaying = false; 
 
-      WordGenerator wg = null; // ë‹¨ì–´ë¥¼ ìƒì„±í•˜ëŠ” ì“°ë ˆë“œ 
-      WordDropper wm = null; // ë‹¨ì–´ë¥¼ ë–¨ì–´ëœ¨ë¦¬ëŠ” ì“°ë ˆë“œ 
+      WordGenerator wg = null; // ´Ü¾î¸¦ »ı¼ºÇÏ´Â ¾²·¹µå 
+      WordDropper wm = null; // ´Ü¾î¸¦ ¶³¾î¶ß¸®´Â ¾²·¹µå 
 
-      FontMetrics fm; // í™”ë©´ì—ì„œì˜ ê¸€ì ê¸¸ì´ë¥¼ êµ¬í•˜ëŠ”ë° ì‚¬ìš© 
-      ThreadGroup virusGrp = new ThreadGroup("virus"); // ë°”ì´ëŸ¬ìŠ¤ ì“°ë ˆë“œë“¤ì˜ ê·¸ë£¹ 
+      FontMetrics fm; // È­¸é¿¡¼­ÀÇ ±ÛÀÚ ±æÀÌ¸¦ ±¸ÇÏ´Âµ¥ »ç¿ë 
+      ThreadGroup virusGrp = new ThreadGroup("virus"); // ¹ÙÀÌ·¯½º ¾²·¹µåµéÀÇ ±×·ì 
 
       String[][] data = { 
-            {"íƒœì—°","ìœ ë¦¬","ìœ¤ì•„","íš¨ì—°","ìˆ˜ì˜","ì„œí˜„","í‹°íŒŒë‹ˆ","ì¨ë‹ˆ","ì œì‹œì¹´"}, 
-            {"íƒœì—°","ìœ ë¦¬","ìœ¤ì•„","íš¨ì—°","ìˆ˜ì˜","ì„œí˜„","í‹°íŒŒë‹ˆ","ì¨ë‹ˆ","ì œì‹œì¹´"}, 
-            {"íƒœì—°","ìœ ë¦¬","ìœ¤ì•„","íš¨ì—°","ìˆ˜ì˜","ì„œí˜„","í‹°íŒŒë‹ˆ","ì¨ë‹ˆ","ì œì‹œì¹´"}, 
-            {"íƒœì—°","ìœ ë¦¬","ìœ¤ì•„","íš¨ì—°","ìˆ˜ì˜","ì„œí˜„","í‹°íŒŒë‹ˆ","ì¨ë‹ˆ","ì œì‹œì¹´"}, 
+            {"ÅÂ¿¬","À¯¸®","À±¾Æ","È¿¿¬","¼ö¿µ","¼­Çö","Æ¼ÆÄ´Ï","½á´Ï","Á¦½ÃÄ«"}, 
+            {"ÅÂ¿¬","À¯¸®","À±¾Æ","È¿¿¬","¼ö¿µ","¼­Çö","Æ¼ÆÄ´Ï","½á´Ï","Á¦½ÃÄ«"}, 
+            {"ÅÂ¿¬","À¯¸®","À±¾Æ","È¿¿¬","¼ö¿µ","¼­Çö","Æ¼ÆÄ´Ï","½á´Ï","Á¦½ÃÄ«"}, 
+            {"ÅÂ¿¬","À¯¸®","À±¾Æ","È¿¿¬","¼ö¿µ","¼­Çö","Æ¼ÆÄ´Ï","½á´Ï","Á¦½ÃÄ«"}, 
       }; 
 
-      final Level[] LEVEL = { 
-            new Level(500, 2000, 1000, data[0]), 
-            new Level(250, 1500, 2000, data[1]), 
-            new Level(120, 1000, 3000, data[2]), 
-            new Level(100, 500, 4000, data[3]), 
+      final Level[] LEVEL = {  
+            new Level(500, 2000, 1000, data[0]),  // 1000³ÑÀ¸¸é ·¹º§¾÷
+            new Level(250, 1500, 2000, data[1]), // 2000³ÑÀ¸¸é ·¹º§¾÷
+            new Level(120, 1000, 3000, data[2]), // 3000³ÑÀ¸¸é ·¹º§¾÷
+            new Level(100, 500, 4000, data[3]), // 4000³ÑÀ¸¸é ·¹º§¾÷
       }; 
 
       Vector words = new Vector(); 
@@ -104,63 +104,61 @@ class TypingGameEx5 extends Frame
       } 
 
       public Level getLevel(int level) { 
-            if(level > MAX_LEVEL) level = MAX_LEVEL; 
-            if(level < 0) level = 0; 
+            if(level > MAX_LEVEL) level = MAX_LEVEL;  // ÃÖ°í ·¹º§ÀÌ¸é ÃÖ°í ·¹º§ ¹İÈ¯
+            if(level < 0) level = 0; // ·¹º§ 0ÀÌ¸é 0 ¹İÈ¯
 
-            return LEVEL[level]; 
+            return LEVEL[level];  // ÇØ´ç ·¹º§ÀÇ LEVEL ¹è¿­ÀÇ °ª(½ºÇÇµå, interval µî ³Ñ°ÜÁÜ-level·Î)
       } 
 
-      public boolean levelUpCheck() { 
+      public boolean levelUpCheck() {
 
-            /*
-
-                ë‹¤ìŒì˜ ì½”ë“œë¥¼ ì™„ì„±í•˜ì„¸ìš”.
-
- 
-
-                1. í˜„ì¬ ë ˆë²¨ì— ë§ëŠ” Levelì¸ìŠ¤í„´ìŠ¤ë¥¼ ì–»ì–´ì˜¨ë‹¤.(getLevel()ì‚¬ìš©)
-
-                2. í˜„ì¬ ì ìˆ˜(score)ê°€ ë‹¤ìŒë ˆë²¨ë¡œ ë„˜ì–´ê°ˆ ì ìˆ˜(levelUpScore)ê°€ 
-
-                   ë˜ëŠ”ì§€ì˜ ì—¬ë¶€ë¥¼ íŒë‹¨í•´ì„œ true ë˜ëŠ” falseë¥¼ ë°˜í™˜í•œë‹¤.
-
-           */
+//                1. ÇöÀç ·¹º§¿¡ ¸Â´Â LevelÀÎ½ºÅÏ½º¸¦ ¾ò¾î¿Â´Ù.(getLevel()»ç¿ë)
+    	  			Level lev = getLevel(curLevel);
+    	  			
+//                2. ÇöÀç Á¡¼ö(score)°¡ ´ÙÀ½·¹º§·Î ³Ñ¾î°¥ Á¡¼ö(levelUpScore)°¡
+//                   µÇ´ÂÁöÀÇ ¿©ºÎ¸¦ ÆÇ´ÜÇØ¼­ true ¶Ç´Â false¸¦ ¹İÈ¯ÇÑ´Ù.
+    	  			if(score >= lev.levelUpScore) {
+    	  				System.out.println("·¹º§¾÷");
+    	  				return true;
+    	  			}
+    	  			else
+    	  				return false;
+    	  			
+    	  			// ¸ğ¹ü´ä¾È: return score >= lev.levelUpScore; ¹®Àå ÀÚÃ¼°¡ ¸ÂÀ¸¸é true ¾Æ´Ï¸é false
       } 
 
       public synchronized int getCurLevel() { 
             return curLevel; 
       } 
       
-      public synchronized void levelUp() { 
+      public synchronized void levelUp() {
+//                  1. ¸ğµç ¹ÙÀÌ·¯½º¸¦ ¸ØÃß°Ô ÇÑ´Ù.(interrupt()»ç¿ë)
+//    	  		VirusThread.currentThread().interrupt(); -> ÀÌ·¸°Ô ÇÏ¸é AWT eventThread°¡ interruptµÊ!!
+    	  			virusGrp.interrupt(); //  ÀÌ°Í ¶§¹®¿¡ ·¹º§ÀÌ È­¸é¿¡ ¾È¶ç¿öÁø °ÅÀÓ!!
 
-            /*
+//                  2. curLevelÀÇ °ªÀ» Áõ°¡½ÃÅ°°í,
+//                      curLevelÀÇ LevelÀÎ½ºÅÏ½º¸¦ ¾ò¾î¿Â´Ù.(getLevel()»ç¿ë)
+    	  			curLevel++;
+    	  			Level lev = getLevel(curLevel);
+    	  			
+    	  			// ¸ğ¹ü ´ä¾È: Level lev = getLevel(curLevel++);
 
-                 ë‹¤ìŒì˜ ì½”ë“œë¥¼ ì™„ì„±í•˜ì„¸ìš”.
-
- 
-
-                  1. ëª¨ë“  ë°”ì´ëŸ¬ìŠ¤ë¥¼ ë©ˆì¶”ê²Œ í•œë‹¤.(interrupt()ì‚¬ìš©)
-
-                  2. curLevelì˜ ê°’ì„ ì¦ê°€ì‹œí‚¤ê³ , 
-
-                      curLevelì˜ Levelì¸ìŠ¤í„´ìŠ¤ë¥¼ ì–»ì–´ì˜¨ë‹¤.(getLevel()ì‚¬ìš©)
-
-                  3. lbLevelì˜ ë‚´ìš©ì„ ìƒˆë¡œìš´ ë ˆë²¨ê°’ì— ë§ê²Œ ë³€ê²½í•œë‹¤.
-
-                  4. wordsë¥¼ ë¹„ìš´ë‹¤.
-
-                  5. screenì„ ì§€ìš´ë‹¤.
-
-                  6. ìƒˆë¡œìš´ ë ˆë²¨ì„ í™”ë©´ì— ë³´ì—¬ì¤€ë‹¤.(showLevel()ì‚¬ìš©)
-
-                  7. speedì™€ intervalì˜ ê°’ì„ 2ì—ì„œ ì–»ì–´ì˜¨ Levelì¸ìŠ¤í„´ìŠ¤ì˜ ê°’ìœ¼ë¡œ ë³€ê²½í•œë‹¤.
-
-            */
+//                  3. lbLevelÀÇ ³»¿ëÀ» »õ·Î¿î ·¹º§°ª¿¡ ¸Â°Ô º¯°æÇÑ´Ù.
+    	  			lbLevel.setText("Level:"+curLevel);
+//                  4. words¸¦ ºñ¿î´Ù.
+    	  			words.clear();
+//                  5. screenÀ» Áö¿î´Ù.
+    	  			screen.clear();
+//                  6. »õ·Î¿î ·¹º§À» È­¸é¿¡ º¸¿©ÁØ´Ù.(showLevel()»ç¿ë)
+    	  			showLevel(curLevel);
+//                  7. speed¿Í intervalÀÇ °ªÀ» 2¿¡¼­ ¾ò¾î¿Â LevelÀÎ½ºÅÏ½ºÀÇ °ªÀ¸·Î º¯°æÇÑ´Ù.
+    	  			speed = lev.speed;
+    	  			interval = lev.interval;
       } 
 
       public void showLevel(int level) { 
             String tmp = "Level "+level; 
-            showTitle(tmp, 1 * 1000); // 1ì´ˆê°„ titleì„ ë³´ì—¬ì¤€ë‹¤.
+            showTitle(tmp, 1 * 1000); // 1ÃÊ°£ titleÀ» º¸¿©ÁØ´Ù.
       } 
 
       public void showTitle(String title, int time) { 
@@ -219,16 +217,12 @@ class TypingGameEx5 extends Frame
 
                         int rand = (int)(Math.random()*data.length); 
 
-                       /*
+//                           1. 10¹ø¿¡ ÇÑ¹ø ²Ã·Î ¹ÙÀÌ·¯½º¸¦ »ı¼ºÇÑ´Ù.(Math.random()»ç¿ë)
 
-                           ë‹¤ìŒì˜ ì½”ë“œë¥¼ ì™„ì„±í•˜ì„¸ìš”.
-
- 
-
-                            1. 10ë²ˆì— í•œë²ˆ ê¼´ë¡œ ë°”ì´ëŸ¬ìŠ¤ë¥¼ ìƒì„±í•œë‹¤.(Math.random()ì‚¬ìš©)
-
-                            boolean isVirus = (ì´ê³³ì— ì•Œë§ì€ ìˆ˜ì‹ì„ ë„£ìœ¼ì„¸ìš”.); 
-                        */
+ //                           boolean isVirus = (ÀÌ°÷¿¡ ¾Ë¸ÂÀº ¼ö½ÄÀ» ³ÖÀ¸¼¼¿ä.);
+                        boolean isVirus = ((int)(Math.random()*10) + 1) / 10 != 0;
+                        // 1/10~9/10 -> 0.xxxÀÌ¹Ç·Î int°ª 0°ú °°´Ù. µû¶ó¼­ 1~9ÃÊ±îÁö´Â isVirus°¡ falseÀÌ°í,(0ÀÌ´Ï±î)
+                        // 10/10 -> 1ÀÌ¹Ç·Î !=0ÀÇ ¹®Àå°ú ºÎÇÕÇÑ´Ù. µû¶ó¼­ 10ÃÊ¿¡ ÇÑ¹ø true¸¦ ¹İÈ¯ÇÑ´Ù.
 
                         Word word = new Word(data[rand], isVirus); 
                         words.add(word); 
@@ -263,7 +257,7 @@ class TypingGameEx5 extends Frame
                   int rand = (int)(Math.random()*5); 
 
                   int oldValue = 0; 
-                  int virusTime = 10 * 1000; // ë°”ì´ëŸ¬ìŠ¤ ë™ì‘ì‹œê°„ì„ 10ì´ˆë¡œ ì„¤ì •í•œë‹¤. 
+                  int virusTime = 10 * 1000; // ¹ÙÀÌ·¯½º µ¿ÀÛ½Ã°£À» 10ÃÊ·Î ¼³Á¤ÇÑ´Ù. 
 
                   switch(rand) { 
                         case 0: 
