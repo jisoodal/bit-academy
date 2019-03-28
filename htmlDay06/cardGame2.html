@@ -1,0 +1,149 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <style>
+    img{
+        height: 160px;
+        width: 120px;
+    }
+    </style>
+</head>
+<body>
+    <!-- 읽기 편하게 cardGame1과 겹치는 주석부분은 제거하였습니다. -->
+    <button id="show">보이기</button>
+    <button id="hide">감추기</button>
+    <button id="shuffle">섞기</button>
+
+    <div id = "board">
+    </div>
+
+    <script>
+    var cardArr = []; 
+    var eachImg = [];
+    var life = 3;
+    var score = 0;
+    var card1; // 카드 2개를 비교하기 위해 선언
+    var card2; // 카드의 src값을 받아오기 위함
+    var tmp = '';
+    // var imgTags = document.querySelectorAll('div>img');
+
+    window.onload = function() {
+        // 1. DOM에 접근한다.
+
+        var showBtn = document.getElementById("show");
+        var hideBtn = document.getElementById("hide");
+        var shuffleBtn = document.getElementById("shuffle");
+        var board = document.getElementById("board");
+
+        // 2. 이벤트 처리
+        showBtn.onclick = showCard; 
+        hideBtn.onclick = hideCard; 
+        shuffleBtn.onclick = shuffleCard;
+        init(); 
+
+        // 게임 시작. showEach의 return값을 받아야 함
+        // gameStart();
+
+        // for(i=0;i<cardArr.length;i++){
+        //     eachImg[i] = board.children[i];
+        // }
+
+        // for(let j=0;j<eachImg.length;j++){
+        //     eachImg[j].setAttribute('onclick', 'showEach("' + j + '")'); // setAttribute로 onclick 기능 추가
+        // }
+ 
+    }
+    function init() {
+        initCardArr();
+        createCardTag();
+        // input(); 
+    }
+
+    function initCardArr() { 
+        for(i=0;i<20;i++) // cardArr은 0~20까지이며, 10장의 카드가 두 번 복사되었다.
+            cardArr[i] = i;
+    }
+
+    function createCardTag() {
+        for(i=0;i<10;i++){
+            // 이 배열에 0~9까지의 카드가 두 장씩 들어와야 한다.
+            tmp += '<img src="card_img2/'+cardArr[i]+'.png">';
+        }
+        // board에 tmp값 두 번 입력
+        tmp += tmp;
+        
+        // tmp에 0~9까지의 카드가 두 번 더해져 있음
+        board.innerHTML = tmp;
+    }
+
+    function input() {
+        for(i=0;i<20;i++){
+            if(i<10){
+                cardArr[i] = imgTags[i];
+            }
+            else{
+                cardArr[i] = imgTags[i-10];
+            }
+        }
+    }
+
+    function showCard(){
+        // var tmp = '';
+        // for(i=0;i<board.children.length;i++) {
+        // tmp += '<img src="card_img2/'+cardArr[i]+'.png">';
+        // }
+        // tmp 에 0~9까지의 카드가 두 번 더해져 있으므로 이걸 board에 보여주면 됨
+        board.innerHTML = tmp;
+    }
+
+    function hideCard() {
+        var imgTags = document.querySelectorAll('div>img');
+
+        // 모든 카드를 back.png로 변경
+
+        for(i=0;i<imgTags.length;i++){
+            imgTags[i].src = "card_img2/back.png"; 
+        }
+    }
+
+    function shuffleCard() {
+        cardArr.sort((a,b)=> Math.random()-0.5);
+        // cardArr가 섞였으니까 그거에 대응하는 카드 이미지도 변경되어야 한다.
+        hideCard();
+    }
+
+    function showEach(cardNum) {
+        alert(cardNum);
+        var imgTags = document.querySelectorAll('div>img');
+        imgTags[cardNum].src = "card_img2/"+cardArr[cardNum]+".png";
+
+        // 클릭한 카드의 src값 반환
+        card1 = board.children[cardNum].src;
+    }
+
+    function gameStart() {
+        for(i=0;i<cardArr.length;i++){
+            card1 = board.children[i].onclick; // showEach로부터 src값 return 받아야 함
+        }
+
+        for(j=0;j<cardArr.length;j++){
+            card2 = board.children[j].onclick; // showEach로부터 src값 return 받아야 함
+        }
+
+        if(card1 === card2){
+            score += 100;
+        } else
+            life--;
+    }
+    </script>
+</body>
+</html>
+
+<!-- 1. 배열의 개수가 2배여야 한다. 
+     2. 0~9까지의 카드가 해당 배열 안에 두 번 들어가야 한다(.png의 일치를 위해)
+     3. 두 카드를 봤을 때 카드가 서로 일치하면(.png값이 일치하면) score++
+     4. 서로 일치하지 않으면 life --;
+    -->

@@ -1,0 +1,100 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <style>
+    .box {
+        width:50px;
+        height: 100px;
+    }
+
+    .btn {
+        width: 30px;
+    }
+
+    .column {
+        display: inline-block;
+        width: 50px;
+    }
+    </style>
+</head>
+<body>
+    <div class="column">
+      <select class="box" name="" size=5 id="leftBox" multiple>  <!-- multiple은 select를 박스형태로 보여준다. -->
+      </select>
+    </div>
+    <!-- select#left>option[value=축구]{축구}*5 -->
+
+    <div class="column">
+    <!-- button.btn{>}*4 -->
+    <button class="btn">&gt;</button>
+    <button class="btn">&lt;</button>
+    <button class="btn">&gt;&gt;</button>
+    <button class="btn">&lt;&lt;</button>
+    </div>
+
+    <div class="column">
+        <select class="box" name="" id="rightBox" size="5" multiple>
+        </select>
+    </div>
+
+    <script>
+
+        // 1. DOM에 접근
+        var arr = ["축구", "야구", "농구", "배구"]
+        var rightBox = document.getElementById("rightBox");
+        var leftBox = document.getElementById("leftBox");
+        var btnArr = document.getElementsByClassName("btn");
+
+    window.onload = function(){
+        // 2. 이벤트 등록
+        btnArr[0].onclick = moveRight;
+        btnArr[1].onclick = moveLeft;
+        btnArr[2].onclick = moveAllRight;
+        btnArr[3].onclick = moveAllLeft;
+
+        // 3. 초기화
+        init(leftBox);
+    }
+    
+        function init(box) {
+            var tmp = '';
+            for(i=0;i<arr.length;i++) {
+                tmp += "<option value='"+ arr[i] +"'>" + i+ arr[i] + "</option>"; // 태그를 문자열로 넣어줌. html 자체가 다 문자열임
+            // 여기에 tmp를 innerHTML로 받지말것.
+            }
+            box.innerHTML = tmp; // 이렇게 한번에 받을 것
+        }
+
+        function move(fromBox, toBox) {
+            // fromBox에서 선택된 option을 골라서 toBox로 옮긴다.
+            var LEN = fromBox.selectedOptions.length;
+            for(i=LEN-1;i>=0;i--)
+            toBox.options.add(fromBox.selectedOptions[i]);
+        }
+
+        function moveRight() {move(leftBox, rightBox);}
+        function moveLeft() {move(rightBox, leftBox)}
+        function moveAllLeft() {init(rightBox); empty(leftBox);}
+        function moveAllLeft() {init(leftBox); empty(rightBox);}
+        function empty(box) {box.innerHTML = '';}
+
+        // function moveAll(fromBox, toBox) {
+        //     init(toBox); // toBox로 옮긴다.
+        //     fromBox.innerHTML = ''; 
+        // }
+
+        // function moveAllRight() { 
+        //     var right = document.getElementById("right")
+        //     init(right);
+        //     left.innerHTML = '';
+        // }
+        // function moveAllLeft() { 
+        //     var left = document.getElementById("left")
+        //     init(left); // 왼쪽으로 옮긴다.
+        //     right.innerHTML = ''; // 오른쪽으로 옮기고 비워주기
+    </script>
+</body>
+</html>

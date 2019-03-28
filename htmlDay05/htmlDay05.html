@@ -1,0 +1,89 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>스포츠 체크</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <script src="main.js"></script>
+</head>
+<body>
+    <!-- 태그로 화면구성부터 먼저 -->
+    <!-- input[type=checkbox value = 야구]{야구}*5 -->
+    <input type="checkbox" value="전체">전체
+    <input type="checkbox" value="야구">야구
+    <input type="checkbox" value="축구">축구
+    <input type="checkbox" value="농구">농구
+    <input type="checkbox" value="배구">배구
+    <textarea name="" id="ta" cols="30" rows="10"></textarea>
+
+    <script>
+        // 메인메서드와 유사. 페이지의 모든 자원이 로딩 끝나면 호출
+    window.onload = function() { 
+        // 1. DOM에 접근(내가 원하는 요소)
+        // 모든 <input>를 가져와 보자.
+        var chkArr = document.getElementsByTagName("input");
+        var ta = document.getElementById("ta");
+
+        // 2. 이벤트 추가 -> 다해줘야 하니까 반복문 추가
+        // chkArr[0].onclick = function() {
+        //     alert(chkArr[0].value);
+        // }
+
+        // chkArr[1].onclick = function() {
+        //     alert(chkArr[1].value);
+        // }
+
+        // chkArr[2].onclick = function() {
+        //     alert(chkArr[2].value);
+        // }
+
+        // chkArr[3].onclick = function() {
+        //     alert(chkArr[3].value);
+        // }
+
+        // chkArr[4].onclick = function() {
+        //     alert(chkArr[4].value);
+        // }
+
+        // 체크박스를 클릭하면, textarea 클릭된
+        for(let i=0;i<chkArr.length;i++) {
+            chkArr[i].onclick = function() {
+                // 전체를 클릭하면 다른 체크박스가 모두 선택되게
+                if(this == chkArr[0]) {
+                    for(j=0;j<chkArr.length;j++){
+                        chkArr[j].checked = this.checked;
+                    }
+                }
+                else {
+                    chkArr[0].checked = false; 
+                }
+
+                ta.innerHTML = '';
+                for(j=1;j<chkArr.length;j++){
+                    if(chkArr[j].checked)
+                    ta.innerHTML += chkArr[j].value;
+                }
+                
+                        
+                    //     // 모든 체크박스를 체크한다.
+                    //     for(j=0;j<chkArr.length;j++){ -> 겹치니까
+                    //         chkArr[j].checked = true;
+                    //     }
+                    // } else {
+                    //     // 모든 체크박스를 체크해제한다.
+                    //     for(j=0;j<chkArr.length;j++){
+                    //      chkArr[j].checked = false;
+                    //     }
+                    // }
+                }
+           // alert(chkArr[i].value); // 이상하다 싶으면 상수로 바꿔보기
+            //  alert(i); // 이렇게 하면 5만 출력됨. -> 이럴때 클로저를 써줌
+        }
+
+    }
+    </script>
+
+</body>
+</html>

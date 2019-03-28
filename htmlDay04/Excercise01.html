@@ -1,0 +1,77 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>운동 고르기</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <script src="main.js"></script>
+
+    <style>
+     ul>li {
+        list-style: none;
+    }
+
+    /*
+
+    ul{
+        position: relative;
+        display: inline;
+        left: 0;
+    }
+
+    textarea{
+        position:absolute;
+        display: inline;
+        right: 0;
+    } */
+
+    </style>
+</head>
+<body>
+    <form>
+    <ul id="d">
+        <!-- 스포츠 리스트 -->
+        <li><input type="checkbox" name="every" value="every" id="every">전체</li>
+        <li><input type="checkbox" name="sports" value="every" id="농구">농구</li>
+        <li><input type="checkbox" name="sports" value="every" id="야구">야구</li>
+        <li><input type="checkbox" name="sports" value="every" id="축구">축구</li>
+        <li><input type="checkbox" name="sports" value="every" id="하키">하키</li>
+    </ul>
+    <textarea id="select" cols="30" rows="10"></textarea>
+    </form>
+
+    <script>
+        var check = Array(5);
+
+        var area = document.getElementById('select');
+        check= document.getElementsByName('sports');
+        var a = document.
+        var all = document.getElementById('every');
+
+        // 전체가 체크되었다면 모든 체크박스가 체크되어야 함
+
+        if(all.checked){
+            
+        }
+
+        // 체크 되었다면
+        a.onclick= function isChecked() {
+            for(i=0;i<check.length;i++){
+             // area에 적어라
+             if(check[i].checked){
+             area.textContent += check[i].id;
+                // area.innerHTML += " "+check.id;
+             }
+            //  if(!(check[i].checked) && i != (check.length)-1)
+            //  splice(i,1,check[i+1])
+
+            //  else
+            //  check.pop();
+            }
+        }
+    </script>
+    
+</body>
+</html>

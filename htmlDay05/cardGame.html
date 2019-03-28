@@ -1,0 +1,77 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <style>
+    img{
+        height: 160px;
+        width: 120px;
+    }
+    </style>
+</head>
+<body>
+    <button id="show">보이기</button>
+    <button id="hide">감추기</button>
+    <button id="shuffle">섞기</button>
+
+    <div id = "board">
+        <!-- 같은 폴더 아래 card_img 폴더 안의 사진 -->
+    <img src="card_img/1.png" alt=""> 
+    </div>
+
+    <script>
+    var cardArr = []; // 카드 담을 배열
+
+    window.onload = function() {
+        // 1. DOM에 접근한다.
+
+        var showBtn = document.getElementById("show");
+        var hideBtn = document.getElementById("hide");
+        var shuffleBtn = document.getElementById("shuffle");
+        var board = document.getElementById("board");
+
+        // 2. 이벤트 처리
+        showBtn.onclick = showCard;
+        hideBtn.onclick = hideCard;
+        shuffleBtn.onclick = shuffleCard;
+        initCardArr(); // 카드 배열을 초기화
+
+    }
+
+    function init() {
+        initCardArr(); // 카드 배열을 초기화
+        createCardTag(); // <img>를 생성
+    }
+
+    function initCardArr() {
+        for(i=0;i<52;i++)
+            cardArr[i] = i;
+    }
+
+    function createCardTag() {
+        var tmp = '';
+        for(i=0;i<cardArr.length;i++){
+            tmp+= '<img src="card_img/'+cardArr[i]+'.png">';
+        }
+    }
+    function showCard(){
+
+    }
+    function hideCard() {}
+    function shuffleCard() {
+        // board.innerHTML = '';
+        cardArr.sort((a,b)=> Math.random()-0.5);
+        // createCardTag();
+
+        var imgTags = document.querySelectorAll('div>img');
+
+        for(i=0;i<imgTags.length;i++){
+            imgTags.src = "card_img/back.png";
+        }
+    }
+
+    </script>
+</body>
+</html>

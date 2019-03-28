@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .box {
+        width:50px;
+        height:100px;
+        /* text-align:center; */
+    }
+
+    .btn {
+        width: 30px;
+    }
+
+    .column {
+        /* float:left; */
+        display:inline-block;
+        width:50px;
+    }
+    </style>
+</head>
+<body>
+    <div class="column">
+        <select class="box" name="" size=5 id="leftBox" multiple>  <!-- multiple은 select를 박스형태로 보여준다. -->
+        </select>
+    </div>
+    <div class="column">
+        <button class='btn'>&lt;</button><br>
+        <button class='btn'>&gt;</button><br>
+        <button class='btn'>&lt;&lt;</button><br>
+        <button class='btn'>&gt;&gt;</button><br>
+    </div>
+    <div class="column">
+        <select class="box" name="" id="rightBox" size=5 multiple>
+        </select>
+    </div>
+    <script>
+
+    var arr = ['농구', '야구', '배구', '축구', '족구'];
+
+    //1. DOM에 접근
+    var leftBox = document.getElementById("leftBox");
+    var rightBox = document.getElementById("rightBox");
+    var btnArr = document.getElementsByClassName("btn");
+
+    window.onload = function() {
+
+        //2. 버튼에 이벤트 처리
+        btnArr[0].onclick = moveToLeft;
+        btnArr[1].onclick = moveToRight;    
+        btnArr[2].onclick = moveAllToLeft;
+        btnArr[3].onclick = moveAllToRight;
+
+        // 3. selectBox 초기화
+        init(leftBox);
+    }
+
+    // 지정된 박스를 배열로 초기화
+    function init(box) {
+        var tmp = '';
+
+        for(i=0;i<arr.length;i++)
+            tmp += "<option value='"+ arr[i] +"'>" + i+ arr[i] + "</option>";
+
+        box.innerHTML = tmp;
+    }
+
+    function move(fromBox, toBox) { 
+       var LEN = fromBox.selectedOptions.length; 
+       for(i=LEN-1;i>=0;i--)
+            toBox.options.add(fromBox.selectedOptions[i])
+    }
+    
+    function moveToRight() { move(leftBox, rightBox);}
+    function moveToLeft() { move(rightBox, leftBox);}
+    function moveAllToRight() { init(rightBox); empty(leftBox);}
+    function moveAllToLeft() { init(leftBox); empty(rightBox);}
+    function empty(box) { box.innerHTML = '';}
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+
+    <style>
+    img {
+        width: 120px;
+        height: 100px;
+    }
+    </style>
+</head>
+<body>
+
+    <!-- 주사위 사진을 넣는 부분 -->
+    <div id="dicePic">
+    </div>
+
+    <script>
+
+    // 두 개의 주사위 배열
+    var dice1 = '';
+    var dice2 = '';
+    var ranNum = [];
+
+    // 주사위 사진을 띄워줄 부분
+    var board = document.getElementById("dicePic");
+    
+    window.onload = function() {
+        // init();
+        initDice();
+    }
+
+    function initDice() {
+        // 각각 tmp1, 2에 주사위 1~6까지의 사진을 넣어준다.
+
+            shuffleNum();
+            dice1 += '<img src="dice/dice'+ranNum[0]+'.jpg">';
+            shuffleNum();
+            dice2 += '<img src="dice/dice'+ranNum[0]+'.jpg">';
+
+        board.innerHTML += dice1+dice2;
+    }
+
+    function shuffleNum() {
+        for(i=0;i<6;i++)
+            ranNum[i] = i+1;
+
+        ranNum.sort((a,b)=>Math.random() - 0.5);
+    }
+    </script>
+    
+</body>
+</html>
+
+<!-- 1. 주사위 사진을 2개 띄운다
+2. 각 주사위 사진.jpg의 번호를 랜덤값으로 보여준다
+-> 그러려면 주사위를 담을 공간 2개
+주사위 i.jpg의 i를 랜덤으로 돌려줄 함수 하나
+그 랜덤으로 돌려준 값을 출력해주는 부분을 추가하면 된다.
+-->

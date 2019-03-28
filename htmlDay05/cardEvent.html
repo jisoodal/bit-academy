@@ -1,0 +1,90 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    img{
+        display: inline-block;
+        width: 150px;
+        height: 200px;
+        margin: 10px;
+    }
+
+    img#back{
+        display: none;
+    }
+
+    </style>
+</head>
+<body> 
+    <img src="https://cdn.shopify.com/s/files/1/0200/7616/products/playing-cards-bicycle-rider-back-1_grande.png?v=1535755695" id="back">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Joker_%28carte_de_jeu%29.jpg/1200px-Joker_%28carte_de_jeu%29.jpg" id="joker" class="card"> 
+    <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Playing_card_spade_8.svg/614px-Playing_card_spade_8.svg.png" id="spade8" class="card"> 
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Playing_card_heart_A.svg/1200px-Playing_card_heart_A.svg.png" id="heartA" class="card">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Aceofspades.svg/1200px-Aceofspades.svg.png" id="spadeA" class="card">
+    <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Playing_card_spade_8.svg/614px-Playing_card_spade_8.svg.png" id="spade8" class="card">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Joker_%28carte_de_jeu%29.jpg/1200px-Joker_%28carte_de_jeu%29.jpg" id="joker" class="card">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Playing_card_heart_A.svg/1200px-Playing_card_heart_A.svg.png" id="heartA" class="card">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Aceofspades.svg/1200px-Aceofspades.svg.png" id="spadeA" class="card">
+
+    <button id="turn">뒤집기</button>
+    <button id="seek">보이기</button>
+    <button id="hide">감추기</button>
+
+    <script>
+        var cardArr = document.getElementsByClassName("card");
+        var back = document.getElementById("back");
+        var turn = document.getElementById("turn");
+        var seek = document.getElementById("seek");
+        var hide = document.getElementById("hide");
+        var backSrc = "https://cdn.shopify.com/s/files/1/0200/7616/products/playing-cards-bicycle-rider-back-1_grande.png?v=1535755695";
+
+        window.onload = function() {
+            // init();
+
+        }
+
+        // function bck() {
+        //     // 모든 카드를 보여준다
+        //     for(i=0;i<cardArr.length;i++){
+        //         cardArr[i].src = cardArr[i].src;
+        //     }
+        // }
+
+        // 뒤집기 버튼을 누른 경우 해당 카드를 back 혹은 원래 이미지로 돌려야 한다.
+        // trn.onclick = function() {
+        //     for(i=0; i<cardArr.length;i++){
+        //         if(cardArr[i].currentSrc != bck.currentSrc){
+        //             cardArr[i].src = bck.src;
+        //         } else {
+        //         cardArr[i].src = cardArr[i].src;
+        //         }  
+        //     }
+        // }
+    
+        // for(k=0; k<cardArr.length; k++){
+        //     cardArr[k].onclick = function() {
+        //         for(j=0;j<cardArr.length;j++){
+        //             cardArr[j].src = bck.src;
+        //         }
+        //      }
+        // }
+
+
+        // 처음에는 모든 카드가 back 상태이어야 함.
+        var allBack = cardArr;
+
+        // function init() {
+        //     var tmp = '';
+        //     for(j=0;j<cardArr.length;j++){
+        //         tmp += "<img src="+backSrc+">";
+        //     }
+
+        // }
+    </script>
+
+</body>
+</html>

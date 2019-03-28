@@ -1,0 +1,87 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>스포츠 체크</title>
+
+    <style>
+    button{
+        display: block;
+    }
+
+    select.sport{
+        float: left;
+        width: 50px;
+        margin-right: 10px;
+    }
+
+    #enter{
+        width: 50px;
+    }
+    </style>
+</head>
+<body>
+        <form>
+                <!-- 화면 구성 -->
+                <select class = "sport" multiple>
+                    <option value="농구">농구</option>
+                    <option value="야구">야구</option>
+                    <option value="축구">축구</option>
+                    <option value="하키">하키</option>
+                </select>
+
+                <!-- 양쪽에 select 넣고 가운데에 각자 화살표에 맞는 기능 넣기 -->
+                <button>></button>
+                <button><</button>
+                <button>>></button>
+                <button><<</button>
+
+                <select id = "enter" multiple>
+                </select>
+            </form>
+
+        <script>
+        
+        window.onload = function() {
+            // 요소 들고오기
+            var optArr = document.getElementsByTagName("select");
+            var btnArr = document.getElementsByTagName("button");
+            var txtArr = document.getElementById("enter");
+            var hap = optArr[0].length+txtArr.length;
+                // 옵션을 클릭하면 -> 해당 옵션 값을 들고 버튼으로 가야함
+                        // > 버튼을 누르면 추가 기능 실행
+                btnArr[0].onclick = function() {
+                   for(k=0;k<hap;k++){
+                       if(optArr[0].options[k].selected){
+                            txtArr.append(optArr[0].options[k]);
+                        }
+                    }
+                }
+
+                // 되돌리기
+                // btnArr[1].onclick = function() {
+                //     for(k=0;k<hap;k++){
+                //         if(txtArr[k].selected){
+                //             optArr[0].append(txtArr[k]);
+                //         }
+                //     }
+                // }
+
+                //         // 전부 추가
+                // btnArr[2].onclick = function() {
+                //   for(k=0;k<hap;k++){
+                //      txtArr.append(optArr[0].options[0]);
+                //   }
+                // }
+
+                // btnArr[3].onclick = function() {
+                //     for(k=0;k<hap;k++){
+                //         optArr[0].append(txtArr[0]);
+                //     }
+                // }
+
+        }
+        </script>
+</body>
+</html>
