@@ -10,6 +10,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.websocket.Session;
 
 @WebServlet("/LoginAction")
 public class LoginAction extends HttpServlet {
@@ -30,6 +31,7 @@ public class LoginAction extends HttpServlet {
 		String[] check = request.getParameterValues("remember");
 		
 		if(id.equals("jisoo") && pwd.equals("1234")) {
+			// 아이디 비밀번호 일치하는 경우 세션 저장
 			// 아이디 기억 체크되어 있으면
 			if(check != null) {
 			Cookie cookie = new Cookie("CookieId", "jisoo");

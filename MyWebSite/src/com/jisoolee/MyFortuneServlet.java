@@ -29,8 +29,8 @@ public class MyFortuneServlet extends HttpServlet {
 		String pigFort 		= "There is all likelihood today of things not shaping up as you desired.",
 			   dogFort 		= "You will find it difficult to keep up appearances. Be prepared.",
 			   chickenFort	= "There is a possibility that your peers may pass on their workload to you.",
-			   monkeyFort 	= "Today you will be forced to make quick decisions.",
-			   sheepFort
+			   monkeyFort 	= "Today you will be forced to make quick decisions.";
+//			   sheepFort
 		
 		
 		PrintWriter out = response.getWriter();
