@@ -1,7 +1,12 @@
 package org.zerock.sample;
 
 import org.springframework.test.context.ContextConfiguration;
+
+import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
+
+import org.hamcrest.CoreMatchers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import lombok.extern.log4j.Log4j;
@@ -28,6 +33,17 @@ public class SampleTests {
 		log.info(restaurant);
 		log.info("-----------------------");
 		log.info(restaurant.getChef());
+	}
+	
+	@Test
+	public void isString() {
+		
+		assertNotNull(restaurant.chef);
+		
+		log.info(restaurant.getBranchNum());
+		log.info(restaurant.getName());
+		assertThat(restaurant.getBranchNum(),CoreMatchers.is(10));
+		
 	}
 
 }

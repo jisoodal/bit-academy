@@ -9,6 +9,12 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	
+	<bean id="restaurant" class="org.zerock.sample.Restaurant">
+		<property name="chef" ref="chef"/> <!-- setter 호출하는 것. @Setter가 없는 경우 이렇게 값을 대입해줌. -->
+		<property name="name" value="matzip"/>
+		<property name="branchNum" value="10"/> <!-- xml 자체는 다 문자열. 문자열 10으로 주었을 때 Restaurant에서 int로 받음 -->
+	</bean>
+	
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 		<!-- <property name="driverClassName"
 		value="oracle.jdbc.driver.OracleDriver"></property>
