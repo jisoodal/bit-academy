@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+</head>
+<body>
+
+ <h1 class="odd">퇴실</h1>
+    <h1 class="even">hello</h1>
+    <h1 class=odd>hello</h1>
+    <h1 class=even>hi</h1>
+    <h1 class="odd">hi</h1>
+    <h1 class=even>hi</h1>
+
+    <!-- <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text"> -->
+
+    <!-- select>option[value=hello$]{hello$}*5     -->
+    <!-- <select name="" id="">
+        <option value="hello1">hello1</option>
+        <option value="hello2">hello2</option>
+        <option value="hello3">hello3</option>
+        <option value="hello4">hello4</option>
+        <option value="hello5">hello5</option>
+    </select> -->
+
+        <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+        <script>
+
+            $(document).ready(function() {
+                // $('h1').filter(function(index){
+                //     return index%2 == 0;
+                // }).css(
+                //     {
+                //         color:'blue',
+                //         background:'black'
+                //     }
+                // );  
+                // $('h1').css('background','orange').filter(':odd').css('color','white');
+                // $('h1').css('background','orange').filter(':even').css('color','red');     이걸 효율적으로 하면 ↓
+                $('h1').css('background','orange').filter(':odd').css('color','white')
+                .end().filter(':even').css('color','red');    
+                });
+
+            // $(function(){
+            //     setTimeout(() => {
+            //         // var tmp= $('select>option:selected').val() // select 옵션에서 선택된 것만 가지고 오는것 자주씀.
+            //         var tmp = $('select>option').each(function(index,item){ // item에 옵션이 하나씩 들어감.
+            //             alert(index+":"+item.value);
+            //         });
+            //         alert(tmp);
+            //     }, 3000);
+            // });
+
+            // $(function() {
+            //     $('input[type=text]').val('hello')
+            //     alert($('input[type=text]').eq(0).val()) // first() 나 last()도 가능 
+            // })
+
+            // $('h1').css('color','blue')
+            // $('#secondId').css('color','pink')
+            // $('.odd').css('color','lightblue')
+            // $('body > h1:nth-child(3)').css('color','orange') // body태그에 있는 n번째 자식->3 = 3번째 자식 => 세번째 hello
+            // $('h1.odd.first').css('color','purple') // 클래스나 아이디에 띄어쓰기가 있는 경우 .으로 표시하면 된다
+
+            // $(); ()안에 function을 집적 넣은 형태도 가능.
+            // $(document).ready(function() {
+            //     alert("First Ready")
+            // });
+
+            // $(document).ready(function() {
+            //     alert("Second Ready")
+            // });
+
+            // $(document).ready(function() {
+            //     alert("Third Ready")
+            // });
+
+        </script>
+    <!-- <button>Modify</button>
+    <h1 id="first">1</h1>
+    <h1 class="even">2</h1>
+    <h1>3</h1>
+    <h1 class="even">4</h1>
+    <h1>5</h1> -->
+    <!-- <script>
+        // jQuery = 대상을 선택하고 거기에 대해서 작업을 처리하는 것
+        $(document).ready(function() {
+        // 버튼을 클릭했을 때 이벤트 처리.
+        // 버튼을 누르면 버튼의 이름($(this).html())을 alert()로 출력.
+        $('button').on('click', function() { // 버튼에 클릭 이벤트 준 것.
+          //  alert($(this).html()); // 여기서의 this -> button
+            alert(this.innerHTML);
+        }) // $('.even').css('color','blue'); -> class="even" 의 색을 blue로 바꿈
+    });
+    </script> -->
+</body>
+</html>

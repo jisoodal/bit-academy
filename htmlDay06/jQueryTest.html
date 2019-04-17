@@ -1,0 +1,94 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+    <style>
+        #btn{
+            display: inline;
+        } 
+        button{
+            display: block;
+        }
+
+        input[type="textarea"]{
+            width:80px;
+            height: 130px;
+        }
+    
+    </style>
+</head>
+<body>
+    <input type="checkbox" id="all-check" />
+    <label>All</label>
+    <div id="check-item">
+        <input type = "checkbox" />
+        <label>A Option</label>
+        <input type = "checkbox" />
+        <label>B Option</label>
+        <input type = "checkbox" />
+        <label>C Option</label>
+    </div>
+    <!-- <input type="textarea" id="ltext">
+    <div id="btn">
+    <button id="right">></button>
+    <button id="left"><</button>
+    <button id="all-check">>></button>
+    <button id="all-uncheck"><<</button>
+    </div>
+    <input type="textarea" id="rtext"> -->
+    
+    <!-- <div id ="wrap">
+        <h1>Hello</h1>
+    </div> -->
+    <!-- <h1><a href="https://www.naver.com">Naver</a></h1> -->
+    <!-- 평점이 자동으로 올라갑니다.
+    <div>
+        <h1>평점:</h1>
+    </div>
+    <button id="stopBtn">stop</button> -->
+    <script>
+    
+    $(document).ready(function() {
+        $('#all-check').change(function() {
+            if(this.checked) {
+                $('#check-item').children().prop('checked', true);
+            } else {
+                $('#check-item').children().prop('checked', false);
+            }
+        });
+        // $('#wrap').on('click','h1', function() { // div 안의 모든 h1 태그에 해당
+        //     var length = $('h1').length;
+        //     var targetHTML = $(this).html();
+        //     $('#wrap').append('<h1>'+ length + '-' + targetHTML + '</h1>');
+        // });
+//         $('a').click(function(event){
+//             $(this).css('background-color','blue');
+// //            event.stopPropagation(); // 이벤트의 전파를 막는다.
+// //            event.preventDefault(); // <a>의 페이지 이동을 막는다.
+//             return false; // 위의 두 줄과 의미가 같다.
+//         });
+
+//         $('h1').click(function() {
+//             $(this).css('background-color', 'red');
+//         });
+        // $('#stopBtn').click(function(){
+        //     $('h1').off();
+        // });
+
+        // $('h1').click(function(){
+        //     $(this).html(function(index,html){
+        //         return html+'★';
+        //     })
+        // });
+
+        // setInterval(function(){
+        //     $('h1').last().trigger('click');
+        // },1000);
+
+    });
+    </script>
+</body>
+</html>
