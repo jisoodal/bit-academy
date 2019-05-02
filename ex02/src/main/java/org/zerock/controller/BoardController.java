@@ -30,10 +30,14 @@ public class BoardController {
 //		log.info("list");
 //		model.addAttribute("list", service.getList());
 //	}
+	
+	// uri가 /list로 끝나는 경우
 	@GetMapping("/list")
 	public void list(Criteria cri, Model model) {
 		
+		// Q1. 로그 찍힌건 cri의 getListLink를 실행한 것처럼 되어있는데, 실제로 실행된게 맞는지!
 		log.info("list: "+cri);
+		// model 객체에 리스트의 정보를 담아서 mapper.getListWithPaging에 담음
 		model.addAttribute("list", service.getList(cri));
 		//model.addAttribute("pageMaker", new PageDTO(cri,123)); // 123 - 임의의 값
 		
