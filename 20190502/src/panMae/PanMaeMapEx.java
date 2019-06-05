@@ -6,8 +6,6 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 
-import sungJukProgram.SungJuk;
-
 public class PanMaeMapEx {
 	
 	static Scanner scanner = new Scanner(System.in);
@@ -90,8 +88,6 @@ public class PanMaeMapEx {
 	}
 	
 	public static void output_product() {
-		
-		// toString 오버라이딩 해야함
 
 		Set set = panMaeMap.entrySet();
 		Iterator it = set.iterator();
@@ -109,6 +105,9 @@ public class PanMaeMapEx {
 		while (it.hasNext()) {
 			Map.Entry e = (Map.Entry) it.next();
 			System.out.println(e.getValue());
+			// 프린트 안에 객체를 넣으면 자동으로 toString이 호출되어서 나온다. 프린트 함수에 담는 순간 자동 호출되어서 나옴.
+			// 객체가 어떻게 출력되고 싶은지에 따라서 오버라이딩 해야한다.
+		
 		}
 
 		System.out.println("==================================\n");	

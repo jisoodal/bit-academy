@@ -1,0 +1,235 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+    <style>
+            table, th, td {
+              border: 1px solid black;
+              border-collapse: collapse;
+              border-spacing: 4px;
+            }
+            th, td {
+              padding: 5px;
+            }
+            th {
+              text-align: left;
+            }
+            
+            textarea{
+                height: 150px;
+                width: 500px;
+            }
+
+            button{
+                
+            }
+            </style>
+</head>
+<body>
+
+    <table>
+    <tr>
+        <th>아이디</th>
+        <td><input type="text" id="id" minlength="6" maxlength="10">(최소 6~최대10, 숫자와 알파벳만 사용)</td>
+    </tr>
+    <tr>
+        <th>비밀번호</th>
+        <td><input type="password" id="pwd" minlength="6" maxlength="10">(최소 6~최대10, 숫자와 알파벳만 사용)</td>
+    </tr>
+    <tr>
+        <th>비밀번호 확인</th>
+        <td><input type="password" id="pwdChk" minlength="6" maxlength="10">(최소 6~최대10, 숫자와 알파벳만 사용)</td>
+    </tr>
+    <tr>
+        <th>주민번호</th>
+        <td><input type="text" id="id_number1" name="id_num" maxlength="6"> - 
+            <input type="text" id="id_number2" name="id_num" maxlength="7"></td>
+    </tr>
+    <tr>
+        <th>성별</th>
+        <td><input type="radio" id="male" name="chk_sex" value="남자">남자 
+            <input type="radio" id="female" name="chk_sex" value="여자">여자
+        </td>
+    </tr>
+
+    <tr>
+        <th>전화번호</th>
+        <td><input type="text" id="phone_1" name="phone"> - 
+            <input type="text" id="phone_2" name="phone"> - 
+            <input type="text" id="phone_3" name="phone"></td>
+    </tr>
+    <tr>
+        <th>이메일</th>
+        <td><input type="text" id="email"> @ <select name="email">
+            <option name="chkEmail" value="choice">이메일을 선택하세요</option>
+            <option name="chkEmail" value="naver">naver.com</option>
+            <option name="chkEmail" value="hanmail">hanmail.net</option>
+            <option name="chkEmail" value="daum">daum.net</option>
+        </select></td>
+    </tr>
+    <tr>
+        <th>취미</th>
+        <td><input type="checkbox" id="climbing" name="hobby">등산 
+            <input type="checkbox" id="reading" name="hobby">독서 
+            <input type="checkbox" id="skiing" name="hobby">스키
+            <input type="checkbox" id="listening" name="hobby">음악 
+            <input type="checkbox" id="movie" name="hobby">영화</td>
+    </tr>
+    <tr>
+        <th>자기소개</th>
+        <td><textarea id="aboutMe" maxlength="1000"></textarea></td>
+    </tr>
+    <tr>
+        <td colspan="2">
+        <input type="submit" id="input" value="입력">
+        <button id="cancel">취소</button>
+        </td>
+    </tr>
+    </table>
+
+    <script>
+
+    var id = document.getElementById("id");
+    var pwd = document.getElementById("pwd");
+    var pwdChk = document.getElementById("pwdChk");
+    var id_num1 = document.getElementById("id_number1");
+    var id_num2 = document.getElementById("id_number2");
+    var is_male = document.getElementById("male");
+    var is_female = document.getElementById("female");
+    var phone1 = document.getElementById("phone_1");
+    var phone2 = document.getElementById("phone_2");
+    var phone3 = document.getElementById("phone_3");
+    var email = document.getElementById("email");
+    var chkEmail = document.getElementsByName("chkEmail");
+    var climbing = document.getElementById("climbing");
+    var reading = document.getElementById("reading");
+    var skiing = document.getElementById("skiing");
+    var listening = document.getElementById("listening");
+    var movie = document.getElementById("movie");
+    var aboutMe = document.getElementById("aboutMe");
+    var input = document.getElementById("input");
+    var cancel = document.getElementById("cancel");
+    var tot_arr = [];
+
+    input.onclick = function() {
+        result();
+    }
+
+    function chk_id() {
+        
+        tot_arr[0] = "아이디: "+id.value+"\n";
+
+    }
+
+    function chk_pwd() {
+        if(pwd.value !== pwdChk.value){
+            alert('비밀번호가 다릅니다!!');
+        } else
+        tot_arr[1] = "비밀번호: "+pwd.value+"\n";
+    }
+
+    function chk_id_num(){
+        var id_sum = 0;
+        var id = id_num1.value + id_num2.value + "";
+        var total_id = 0;
+
+        for(i=0;i<8;i++){
+            id_sum += parseInt(id.charAt(i)) * (i+2);
+        }
+
+        for(j=8;j<12;j++){
+            id_sum += parseInt(id.charAt(j)) * (j-6);
+        }
+
+        total_id = 11 - (id_sum%11);
+
+        if(total_id !== parseInt(id.charAt(12)))
+        alert('유효하지 않은 주민번호입니다!');
+
+        else
+        tot_arr[2] = "주민등록번호: "+id_num1.value+"-"+id_num2.value+"\n";
+    }
+
+    function chk_sex(){
+
+        // if(parseInt((id_num2.value.charAt(0)) === 1 || 3) && (is_male.checked === false))
+        //     alert('성별이 잘못 입력되었거나, 주민등록번호가 잘못 적혔습니다.')
+
+        // else if((parseInt(id_num2.value.charAt(0)) === 2 || 4) && (is_female.checked === false))
+        //     alert('성별이 잘못 입력되었거나, 주민등록번호가 잘못 적혔습니다.');
+
+        // else{
+            if(is_male.checked)
+            tot_arr[3] = "성별: "+is_male.value+"\n";
+            
+            else
+            tot_arr[3] = "성별: "+is_female.value+"\n";
+        // }
+    }
+
+    function chk_phone(){
+        
+        tot_arr[4] = "전화번호: "+phone1.value+"-"+phone2.value+"-"+phone3.value;
+    }
+
+    function chk_email(){
+
+        for(i=0;i<chk_email.length;i++){
+            if(chk_email[i].selected)
+            // tot_arr[5] = "이메일: "+email.value+"@"+chk_email[i].value+"\n";
+            alert(chk_email[i]);
+        }
+    }
+
+    function chk_hobby() {
+
+        tot_arr[6] = "취미: ";
+        for(i=0;i<5;i++){
+            if(climbing.checked)
+            tot_arr[6] += climbing.value+" ";
+
+            if(reading.checked)
+            tot_arr[6] += readning.value+" ";
+
+            if(skiing.checked)
+            tot_arr[6] += skiing.value+" ";
+
+            if(listening.checked)
+            tot_arr[6] += listening.value+" ";
+
+            if(movie.checked)
+            tot_arr[6] += movie.value+" ";
+
+        }
+    }
+
+    function chk_aboutMe() {
+
+        tot_arr[7] = "자기소개: "+aboutMe.value;
+    }
+
+    function result() {
+        chk_id();
+        chk_pwd();
+        chk_id_num();
+        chk_sex();
+        chk_phone();
+        chk_email();
+        chk_hobby();
+        chk_aboutMe();
+
+        var total = "";
+        for(i=0;i<tot_arr.length;i++){
+            total += tot_arr[i];
+        }
+        alert(total);
+    }
+
+
+    </script>
+
+</body>
+</html>

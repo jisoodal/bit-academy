@@ -38,8 +38,10 @@ public class PanMaeMap {
 	}
 
 	public String toString() {
-
-		return code + "\t" + name + "\t" + price + "원\t" + amount + "개\t" + totalCost + "원\t";
+//
+//		return code + "\t" + name + "\t" + price + "원\t" + amount + "개\t" + totalCost + "원\t";
+//	
+		return "a";
 	}
 
 	public void printEach() {
@@ -65,5 +67,19 @@ public class PanMaeMap {
 		this.price 	= newPrice;
 		this.amount = newAmount;
 	}
+	
+	public int hashCode() {
+		return code.hashCode();
+	}
+	
+	public boolean equals(Object obj) {
+		 if (!(obj instanceof PanMaeMap))
+		 return false;
+		 PanMaeMap panmae = (PanMaeMap) obj;
+		 if (code.equals(panmae.code))
+		 return true;
+		 else
+		 return false;
+	} 
 
 }
